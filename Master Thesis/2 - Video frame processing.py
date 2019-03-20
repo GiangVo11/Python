@@ -346,4 +346,18 @@ dfNew[29:40]
 
 Min = dfNew.groupby(['lookup'])['Time2'].min()
 Min
-
+# create a folder to store extracted images
+import os
+folder = 'test1'  
+os.mkdir(folder)
+# use opencv to do the job
+import cv2
+print(cv2.__version__)  # my version is 3.1.0
+vidcap = cv2.VideoCapture('tagesschau 2000 Uhr 05122012.mp4')
+while True:
+    success,image = vidcap.read()
+    if not success:
+        break
+    cv2.imwrite(os.path.join(folder,"frame{:d}.jpg".format(count)), image)     # save frame as JPEG file
+    count += 1
+print("{} images are extacted in {}.".format(count,folder))
