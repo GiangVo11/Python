@@ -1,18 +1,15 @@
 
-# coding: utf-8
-
-# In[ ]:
 
 
 import csv
 from datetime import datetime
 
-output_file = open(r"F:\Giang\corrected.csv", "wb")
+output_file = open("corrected.csv", "wb")
 fieldnames = ['Date', 'Month' , 'Year', 'Hour', 'AQI' , 'Raw Conc.']
 writer = csv.DictWriter(output_file, fieldnames=fieldnames)
 writer.writeheader()
 
-with open(r"F:\Giang\selected.csv") as csvfile:
+with open("selected.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         output_row = {}
